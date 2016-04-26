@@ -1,0 +1,13 @@
+image: php5.6
+before_script:
+-apt-get update -yqq
+-apt-get install git -qq
+
+job_lint:
+script:
+-./scripts/lint.sh App/
+
+job_phpunit:
+stage: unit_tests
+script:
+-vendor/bin/phpunit --bootstrap init.php App/Tests
